@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Saúde - Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background-color: #4a90e2;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .health-card-container {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+      }
+
+      .card-background {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 60px;
+        height: 50px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 8px;
+      }
+
+      .card-tab {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 15px;
+        height: 15px;
+        background-color: white;
+        border: 2px solid black;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+
+      .heart-container {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+      }
+
+      .heart {
+        font-size: 20px;
+        color: black;
+      }
+
+      .medical-cross {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        font-size: 10px;
+        color: black;
+      }
+
+      .person-container {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+
+      .person {
+        font-size: 16px;
+        color: black;
+      }
+
+      .text-lines {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+      }
+
+      .text-line {
+        height: 2px;
+        background-color: black;
+        margin-bottom: 2px;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+        letter-spacing: 2px;
+      }
+
+      .input-container {
+        width: 100%;
+        margin-bottom: 40px;
+      }
+
+      .input-wrapper {
+        margin-bottom: 30px;
+      }
+
+      .input {
+        width: 100%;
+        font-size: 16px;
+        color: black;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        padding: 10px 0;
+        outline: none;
+      }
+
+      .input::placeholder {
+        color: #999;
+      }
+
+      .button-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .login-button,
+      .register-button {
+        background-color: white;
+        border: 1px solid black;
+        padding: 15px 40px;
+        margin-bottom: 15px;
+        border-radius: 0;
+        min-width: 200px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .login-button:hover,
+      .register-button:hover {
+        background-color: #f0f0f0;
+      }
+
+      .register-button {
+        margin-bottom: 20px;
+      }
+
+      .button-text {
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+
+      .forgot-password {
+        color: black;
+        font-size: 14px;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+
+      .help-button {
+        position: fixed;
+        bottom: 30px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .help-button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .help-text {
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+      }
+
+      /* Responsividade */
+      @media (max-width: 480px) {
+        .container {
+          padding: 10px;
+        }
+
+        .title {
+          font-size: 20px;
+        }
+
+        .login-button,
+        .register-button {
+          min-width: 150px;
+          padding: 12px 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header com ícone e título -->
+      <div class="header">
+        <div class="health-card-container">
+          <div class="card-background">
+            <!-- Coração com cruz médica -->
+            <div class="heart-container">
+              <span class="heart">♥</span>
+              <span class="medical-cross">+</span>
+            </div>
+
+            <!-- Ícone de pessoa -->
+            <div class="person-container">
+              <span class="person">👤</span>
+            </div>
+
+            <!-- Linhas de texto -->
+            <div class="text-lines">
+              <div class="text-line"></div>
+              <div class="text-line"></div>
+            </div>
+          </div>
+
+          <!-- Aba do cartão -->
+          <div class="card-tab"></div>
+        </div>
+        <h1 class="title">HEALTH CARD</h1>
+      </div>
+
+      <!-- Campos de entrada -->
+      <div class="input-container">
+        <div class="input-wrapper">
+          <input type="text" class="input" placeholder="Login" id="login" />
+        </div>
+        <div class="input-wrapper">
+          <input type="password" class="input" placeholder="Senha" id="senha" />
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="button-container">
+        <button class="login-button" onclick="handleLogin()">
+          <span class="button-text">ENTRAR</span>
+        </button>
+
+        <button class="register-button" onclick="handleRegister()">
+          <span class="button-text">Registre-se aqui</span>
+        </button>
+
+        <span class="forgot-password" onclick="handleForgotPassword()">
+          Esqueci minha senha
+        </span>
+      </div>
+
+      <!-- Botão de ajuda -->
+      <button class="help-button" onclick="handleHelp()">
+        <span class="help-text">?</span>
+      </button>
+    </div>
+
+    <script>
+      function handleLogin() {
+        const login = document.getElementById("login").value;
+        const senha = document.getElementById("senha").value;
+
+        if (!login || !senha) {
+          alert("Por favor, preencha todos os campos");
+          return;
+        }
+
+        alert("Login realizado com sucesso!");
+      }
+
+      function handleRegister() {
+        alert("Redirecionando para tela de registro...");
+      }
+
+      function handleForgotPassword() {
+        alert("Redirecionando para recuperação de senha...");
+      }
+
+      function handleHelp() {
+        alert("Entre em contato conosco para suporte");
+      }
+
+      // Adicionar efeitos visuais
+      document.addEventListener("DOMContentLoaded", function () {
+        const inputs = document.querySelectorAll(".input");
+        inputs.forEach((input) => {
+          input.addEventListener("focus", function () {
+            this.style.borderBottomColor = "#000";
+          });
+
+          input.addEventListener("blur", function () {
+            this.style.borderBottomColor = "#fff";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
