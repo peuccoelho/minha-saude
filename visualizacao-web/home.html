@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Saúde - Tela Inicial</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background-color: #4a90e2;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Header com perfil e boas-vindas */
+      .header {
+        background-color: #4a90e2;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+
+      .profile-section {
+        display: flex;
+        align-items: center;
+      }
+
+      .profile-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #e5e7eb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+      }
+
+      .profile-icon::before {
+        content: "👤";
+        font-size: 20px;
+        color: #8b5cf6;
+      }
+
+      .welcome-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+      }
+
+      /* Conteúdo principal */
+      .content {
+        flex: 1;
+        background-color: white;
+        padding: 30px 20px;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 160px);
+        gap: 20px;
+        max-width: 360px;
+        margin: 0 auto;
+        place-items: center;
+        height: 100%;
+        align-content: center;
+        justify-content: center;
+      }
+
+      .card {
+        width: 160px;
+        height: 120px;
+        border: 1px solid black;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 0;
+      }
+
+      .card:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-text {
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+        padding: 0 10px;
+      }
+
+      /* Barra de navegação inferior */
+      .bottom-navigation {
+        display: flex;
+        background-color: #4a90e2;
+        padding: 15px 20px;
+        justify-content: space-around;
+        align-items: center;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+
+      .nav-item {
+        padding: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-item:hover {
+        transform: scale(1.1);
+      }
+
+      .nav-icon {
+        font-size: 24px;
+        color: black;
+      }
+
+      .active-nav-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: white;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .active-nav-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: black;
+      }
+
+      /* Ícones para navegação */
+      .calendar-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: black;
+      }
+
+      .settings-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: black;
+      }
+
+      /* Responsividade */
+      @media (max-width: 480px) {
+        .content {
+          padding: 20px 15px;
+        }
+
+        .cards-grid {
+          gap: 15px;
+        }
+
+        .card {
+          height: 100px;
+        }
+
+        .card-text {
+          font-size: 14px;
+        }
+
+        .welcome-text {
+          font-size: 16px;
+        }
+
+        .profile-icon {
+          width: 35px;
+          height: 35px;
+        }
+
+        .profile-icon::before {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .cards-grid {
+          grid-template-columns: repeat(2, 140px);
+          max-width: 300px;
+        }
+
+        .card {
+          width: 140px;
+          height: 100px;
+        }
+
+        .card-text {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header com perfil e boas-vindas -->
+      <div class="header">
+        <div class="profile-section">
+          <div class="profile-icon"></div>
+          <div class="welcome-text">Bem vindo, Joaquim</div>
+        </div>
+      </div>
+
+      <!-- Conteúdo principal -->
+      <div class="content">
+        <!-- Grid de cards -->
+        <div class="cards-grid">
+          <div class="card" onclick="handleCardPress('Carteira de Vacinação')">
+            <div class="card-text">Carteira de Vacinação</div>
+          </div>
+
+          <div class="card" onclick="handleCardPress('Guia de Remédios')">
+            <div class="card-text">Guia de Remédios</div>
+          </div>
+
+          <div class="card" onclick="handleCardPress('Área de Exames')">
+            <div class="card-text">Área de Exames</div>
+          </div>
+
+          <div class="card" onclick="handleCardPress('Cadastro Família')">
+            <div class="card-text">Cadastro Família</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de navegação inferior -->
+      <div class="bottom-navigation">
+        <div class="nav-item" onclick="handleNavigation('Calendário')">
+          <div class="nav-icon calendar-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div
+          class="nav-item active-nav-item"
+          onclick="handleNavigation('Home')"
+        >
+          <div class="active-nav-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="nav-item" onclick="handleNavigation('Configurações')">
+          <div class="nav-icon settings-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleCardPress(cardName) {
+        alert(`Abrindo ${cardName}...`);
+      }
+
+      function handleNavigation(screen) {
+        if (screen !== "Home") {
+          alert(`Navegando para ${screen}...`);
+        }
+      }
+
+      // Adicionar efeitos visuais
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-2px)";
+            this.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+            this.style.boxShadow = "none";
+          });
+        });
+
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+          item.addEventListener("mouseenter", function () {
+            this.style.transform = "scale(1.1)";
+          });
+
+          item.addEventListener("mouseleave", function () {
+            this.style.transform = "scale(1)";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-// ícone do cartão de saúde (precisa corrigir essa porretaa)
+// Componente de ícone personalizado para cartão de saúde
+// TODO: Backend - Implementar endpoint para validação de cartão de saúde
 const HealthCardIcon = ({ size = 80 }) => (
   <View style={styles.healthCardContainer}>
     {/* Cartão principal */}
@@ -38,27 +39,44 @@ const HealthCardIcon = ({ size = 80 }) => (
   </View>
 );
 
-const LoginScreen = () => {
+const LoginScreen = ({ onLogin }) => {
+  // Estados para captura de dados do formulário
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
 
+  // Função de autenticação - substituir por chamada real para API
+  // TODO: Backend - Implementar endpoint POST /auth/login
+  // Payload: { username: string, password: string }
+  // Response: { token: string, user: UserObject, expiresIn: number }
   const handleLogin = () => {
     if (!login || !senha) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos');
       return;
     }
     
-    Alert.alert('Sucesso', 'Login realizado com sucesso!');
+    // TODO: Backend - Implementar validação de credenciais
+    // TODO: Backend - Implementar geração de JWT token
+    // TODO: Backend - Implementar rate limiting para tentativas de login
+    Alert.alert('Sucesso', 'Login realizado com sucesso!', [
+      { text: 'OK', onPress: onLogin }
+    ]);
   };
 
+  // TODO: Backend - Implementar endpoint POST /auth/register
+  // Payload: { username: string, email: string, password: string, confirmPassword: string }
   const handleRegister = () => {
     Alert.alert('Registro', 'Redirecionando para tela de registro...');
   };
 
+  // TODO: Backend - Implementar endpoint POST /auth/forgot-password
+  // Payload: { email: string }
+  // Response: { message: string, resetToken?: string }
   const handleForgotPassword = () => {
     Alert.alert('Recuperar Senha', 'Redirecionando para recuperação de senha...');
   };
 
+  // TODO: Backend - Implementar endpoint GET /support/help
+  // Response: { faq: FAQItem[], contactInfo: ContactInfo }
   const handleHelp = () => {
     Alert.alert('Ajuda', 'Entre em contato conosco para suporte');
   };
@@ -66,7 +84,6 @@ const LoginScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        {/* Header com ícone e título */}
         <View style={styles.header}>
           <View style={styles.iconContainer}>
             <HealthCardIcon size={80} />
@@ -74,7 +91,6 @@ const LoginScreen = () => {
           <Text style={styles.title}>HEALTH CARD</Text>
         </View>
 
-        {/* Campos de entrada */}
         <View style={styles.inputContainer}>
           <View style={styles.inputWrapper}>
             <TextInput
@@ -83,6 +99,8 @@ const LoginScreen = () => {
               placeholderTextColor="#999"
               value={login}
               onChangeText={setLogin}
+              autoCapitalize="none"
+              autoCorrect={false}
             />
             <View style={styles.inputLine} />
           </View>
@@ -95,12 +113,12 @@ const LoginScreen = () => {
               value={senha}
               onChangeText={setSenha}
               secureTextEntry
+              autoCapitalize="none"
             />
             <View style={styles.inputLine} />
           </View>
         </View>
 
-        {/* Botões */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
             <Text style={styles.loginButtonText}>ENTRAR</Text>
@@ -115,7 +133,6 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Botão de ajuda */}
         <TouchableOpacity style={styles.helpButton} onPress={handleHelp}>
           <Text style={styles.helpButtonText}>?</Text>
         </TouchableOpacity>
